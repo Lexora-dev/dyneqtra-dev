@@ -1,9 +1,9 @@
-  # dyneqtra-dev - Graph-Based Editor for LLM Workflows
-
-![Banner](https://raw.githubusercontent.com/sowravhasan/brand-shop/main/A3955FBC-3A6A-4034-A9C4-B5E8A32D973D.png)
+  # Lexora-dev - Graph-Based Editor for LLM Workflows
 
 
-# 🕸️ Why dyneqtra-dev?
+
+
+# 🕸️ Why Lexora-dev?
 
 - 🖐️ **Drag-and-drop**: Visually build and test workflows in seconds.
 - 🧪 **Evals**: Quickly test and refine agent steps interactively.
@@ -20,8 +20,8 @@ You can launch dyneqtra-dev using pre-built docker images in the following steps
 
 1. **Clone the repository:**
     ```sh
-    git clone https://github.com/dyneqtra/dyneqtra-dev
-    cd dyneqtra-dev
+    git clone https://github.com/Lexora/Lexora-dev
+    cd Lexora-dev
     ```
 
 2. **Create a .env file:**
@@ -49,7 +49,7 @@ You can launch dyneqtra-dev using pre-built docker images in the following steps
 Set up is completed. Click on "New Spur" to create a workflow, or start with one of the stock templates.
 
 
-# 🛠️ dyneqtra-dev Development Setup
+# 🛠️ Lexora-dev Development Setup
 #### [ Instructions for development on Unix-like systems. Development on Windows/PC not tested ]
 
 The steps for dev setup are same as above, except for step 3: we launch the app in the dev mode instead
@@ -63,20 +63,20 @@ The steps for dev setup are same as above, except for step 3: we launch the app 
     This will start a local instance of dyneqtra-dev that will store spurs and other state information in a postgres database. A local postgres service is used by default. Override `POSTGRES_*` variables in the `.env` file to use an external postgres database.
 
 
-# 🦙 Using dyneqtra-dev with Ollama (Local Models)
+# 🦙 Using Lexora-dev with Ollama (Local Models)
 
-dyneqtra-dev can work with local models served using Ollama.
+Lexora-dev can work with local models served using Ollama.
 
 Steps to configure dyneqtra-dev to work with Ollama running on the same host.
 
 ### 1. Configure Ollama
-To ensure Ollama API is reachable from dyneqtra-dev, we need to start the Ollama service with environment variable `OLLAMA_HOST=0.0.0.0` . This allows requests coming from dyneqtra-dev docker's bridge network to get through to Ollama.
+To ensure Ollama API is reachable from dyneqtra-dev, we need to start the Ollama service with environment variable `OLLAMA_HOST=0.0.0.0` . This allows requests coming from Lexora-dev docker's bridge network to get through to Ollama.
 An easy way to do this is to launch the ollama service with the following command:
 ```sh
 OLLAMA_HOST="0.0.0.0" ollama serve
 ```
 
-### 2. Update the dyneqtra-dev .env file
+### 2. Update the Lexora-dev .env file
 Next up we need to update the `OLLAMA_BASE_URL` environment value in the `.env` file.
 If your Ollama port is 11434 (the default port), then the entry in `.env` file should look like this:
 ```sh
@@ -84,9 +84,9 @@ OLLAMA_BASE_URL=http://host.docker.internal:11434
 ```
 (Please make sure that there is no trailing slash in the end!)
 
-In dyneqtra-dev's set up, `host.docker.internal` refers to the host machine where both dyneqtra-dev and Ollama are running.
+In Lexora-dev's set up, `host.docker.internal` refers to the host machine where both dyneqtra-dev and Ollama are running.
 
-### 3. Launch the dyneqtra-dev app
+### 3. Launch the Lexora-dev app
 Follow the usual steps to launch the dyneqtra-dev app, starting with the command:
 ```sh
 docker compose -f docker-compose.prod.yml up --build -d
@@ -103,7 +103,7 @@ You will be able to select Ollama models [`ollama/llama3.2`, `ollama/llama3`, ..
 Please make sure the model you select is explicitly downloaded in ollama. That is, you will need to manually manage these models via ollama. To download a model you can simply run `ollama pull <model-name>`.
 
 ## Note on supported models
-dyneqtra-dev only works with models that support structured-output and json mode. Most newer models should be good, but it would still be good to confirm this from Ollama documentation for the model you wish to use.
+Lexora-dev only works with models that support structured-output and json mode. Most newer models should be good, but it would still be good to confirm this from Ollama documentation for the model you wish to use.
 
 # ⭐ Support us
 
